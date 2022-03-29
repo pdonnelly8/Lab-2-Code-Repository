@@ -54,5 +54,42 @@ public class DataUtilitiesTest extends TestCase {
 			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
 		}
 	}
+	
+	//These don't work but just adding in
+	@Test
+	public void testValidRowTotal() {
+		assertEquals("Wrong Sum Returned. It should be 1.0", 1.0, DataUtilities.calculateRowTotal(values2D, 0), 0.0000001d);
+	}
+	
+	@Test
+	public void testNullDataRowTotal() {
+		try 
+		{
+			DataUtilities.calculateRowTotal(null, 0);
+			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: InvalidParameterException");
+		}
+		catch (Exception e) 
+		{
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
+		}
+	}
+	
+	@Test
+	public void testValidCreateNumberArray() {
+		double[] data = {10, 20, 30};
+		Number[] newData = DataUtilities.createNumberArray(data);
+		assertEquals(newData.getClass(), Number[].class);
+	}
+	
+	@Test
+	public void testNullCreateNumberArray() {
+		try {
+			DataUtilities.createNumberArray(null);
+			fail("No Exception was thrown");
+		}
+		catch (Exception e) {
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
+		}
+	}
 
 }
