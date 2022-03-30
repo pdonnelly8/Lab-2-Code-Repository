@@ -1,10 +1,11 @@
 package org.jfree.data.test;
 
-import java.security.InvalidParameterException;
+import java.lang.IllegalArgumentException;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.DefaultKeyedValues2D;
 import org.jfree.data.Values2D;
+import org.jfree.data.KeyedValues;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,11 +48,22 @@ public class DataUtilitiesTest extends TestCase {
 		try 
 		{
 			DataUtilities.calculateColumnTotal(null, 0);
-			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: InvalidParameterException");
+			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
 		}
 		catch (Exception e) 
 		{
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
+		}
+	}
+	
+	@Test
+	public void testIncorrectColumnIndex() {
+		try {
+			DataUtilities.calculateColumnTotal(values2D, -1);
+			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
+		}
+		catch (Exception e) {
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
 		}
 	}
 	
@@ -62,15 +74,29 @@ public class DataUtilitiesTest extends TestCase {
 	}
 	
 	@Test
+	public void testIncorrectRowIndex() {
+		try 
+		{
+			DataUtilities.calculateRowTotal(values2D, -1);
+			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
+		}
+		catch (Exception e) 
+		{
+			System.out.println(e.getClass());
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+		}
+	}
+	
+	@Test
 	public void testNullDataRowTotal() {
 		try 
 		{
 			DataUtilities.calculateRowTotal(null, 0);
-			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: InvalidParameterException");
+			fail("No Exception Was Thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
 		}
 		catch (Exception e) 
 		{
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
 		}
 	}
 	
@@ -88,8 +114,30 @@ public class DataUtilitiesTest extends TestCase {
 			fail("No Exception was thrown");
 		}
 		catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(InvalidParameterException.class));
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
 		}
 	}
-
+	
+	@Test
+	public void testValidCreateNumberArray2D() {
+		double[][] arr = { { 1, 2 }, { 3, 4 } };
+		Number[][] newArr = DataUtilities.createNumberArray2D(arr);
+		assertEquals(newArr.getClass(), Number[][].class);	
+	}
+	
+	@Test
+	public void testNullCreateNumberArray2D() {
+		try {
+			DataUtilities.createNumberArray2D(null);
+			fail("No Exception was thrown");
+		}
+		catch (Exception e) {
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
+		}
+	}
+	
+	
+	public void testValidGetCumulative() {
+		
+	}
 }
