@@ -30,7 +30,10 @@ public class DataUtilitiesTest extends TestCase {
 		DefaultKeyedValues2D testValues = new DefaultKeyedValues2D();
 		values2D = testValues;
 		testValues.addValue(1,  0,  0);
-		testValues.addValue(4,  1,  0);
+		testValues.addValue(2,  0,  1);
+		testValues.addValue(3,  1,  0);
+		testValues.addValue(4,  1,  1);
+		System.out.println(testValues.toString());
 	}
 
 	@After
@@ -39,8 +42,8 @@ public class DataUtilitiesTest extends TestCase {
 	}
 
 	@Test
-	public void testValidDataAndColumnTotal() {
-		assertEquals("Wrong Sum Returned. It should be 5.0", 5.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
+	public void testCalculateColumnTotal1() {
+		assertEquals("Wrong Sum Returned. It should be 4.0", 4.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
 	}
 	
 	@Test
@@ -82,7 +85,6 @@ public class DataUtilitiesTest extends TestCase {
 		}
 		catch (Exception e) 
 		{
-			System.out.println(e.getClass());
 			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
 		}
 	}
@@ -101,17 +103,33 @@ public class DataUtilitiesTest extends TestCase {
 	}
 	
 	@Test
-	public void testValidCreateNumberArray() {
+	public void testCreateNumberArray() {
 		double[] data = {10, 20, 30};
 		Number[] newData = DataUtilities.createNumberArray(data);
-		assertEquals(newData.getClass(), Number[].class);
+		assertEquals("Incorrect Middle Value - Expected 20", 20.0, newData[1]);
+		assertEquals("Incorrect Left Boundary Value - Expected 10", 10.0, newData[0]);
+		assertEquals("Incorrect Right Boundary Value - Expected 30", 30.0, newData[2]);
+		
+		try {
+			Number rightWrong = newData[3];
+			fail("No Exception was thrown for index past right boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
+		} catch (Exception e) {
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+		}
+		
+		try {
+			Number leftWrong = newData[-1];
+			fail("No Exception was thrown for index past left boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
+		} catch (Exception e) {
+			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+		}
 	}
 	
 	@Test
 	public void testNullCreateNumberArray() {
 		try {
 			DataUtilities.createNumberArray(null);
-			fail("No Exception was thrown");
+			fail("No Exception was thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
 		}
 		catch (Exception e) {
 			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
