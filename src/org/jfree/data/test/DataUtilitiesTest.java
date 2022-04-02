@@ -106,22 +106,22 @@ public class DataUtilitiesTest extends TestCase {
 	public void testCreateNumberArray() {
 		double[] data = {10, 20, 30};
 		Number[] newData = DataUtilities.createNumberArray(data);
-		assertEquals("Incorrect Middle Value - Expected 20", 20.0, newData[1]);
-		assertEquals("Incorrect Left Boundary Value - Expected 10", 10.0, newData[0]);
-		assertEquals("Incorrect Right Boundary Value - Expected 30", 30.0, newData[2]);
-		
+		assertEquals("TC3 Failed. Incorrect Middle Value - Expected 20", 20.0, newData[1]);
+		assertEquals("TC4 Failed. Incorrect Left Boundary Value - Expected 10", 10.0, newData[0]);
+		assertEquals("TC5 Failed. Incorrect Right Boundary Value - Expected 30", 30.0, newData[2]);
+
 		try {
-			Number rightWrong = newData[3];
-			fail("No Exception was thrown for index past right boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
+			Number leftWrong = newData[-1];
+			fail("TC6 Failed. No Exception was thrown for index past left boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			assertTrue("TC6 FailedIncorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
 		}
 		
 		try {
-			Number leftWrong = newData[-1];
-			fail("No Exception was thrown for index past left boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
+			Number rightWrong = newData[3];
+			fail("TC7 Failed. No Exception was thrown for index past right boundary - Expected Outcome Was: A thrown exception of type: IndexOutOfBoundsException");
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			assertTrue("TC7 Failed. Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
 		}
 	}
 	
@@ -129,16 +129,16 @@ public class DataUtilitiesTest extends TestCase {
 	public void testNullCreateNumberArray() {
 		try {
 			DataUtilities.createNumberArray(null);
-			fail("No Exception was thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
+			fail("TC2 Failed. No Exception was thrown - Expected Outcome Was: A thrown exception of type: IllegalArgumentException");
 		}
 		catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
+			assertTrue("TC2 Failed. Incorrect Exception Type Thrown", e.getClass().equals(IllegalArgumentException.class));
 		}
 	}
 	
 	@Test
 	public void testValidCreateNumberArray2D() {
-		double[][] arr = { { 1, 2 }, { 3, 4 } };
+		double[][] arr = { {1,2,3}, {4,5,6}, {7,8,9}};
 		Number[][] newArr = DataUtilities.createNumberArray2D(arr);
 		assertEquals(newArr.getClass(), Number[][].class);	
 	}
