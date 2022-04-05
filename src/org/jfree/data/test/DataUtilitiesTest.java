@@ -156,7 +156,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DPos, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DPos, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -179,7 +179,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DNeg, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -188,7 +188,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DNeg, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -202,7 +202,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DMix, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -211,7 +211,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateColumnTotal(values2DMix, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -264,7 +264,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DPos, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -273,7 +273,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DPos, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}	
 	}
 	
@@ -287,7 +287,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DNeg, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -296,7 +296,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DNeg, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}	
 	}
 	
@@ -310,7 +310,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DMix, -1), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}
 	}
 	
@@ -319,7 +319,7 @@ public class DataUtilitiesTest extends TestCase {
 		try {
 			assertEquals("Wrong Sum Returned. It should be 0", 0.0, DataUtilities.calculateRowTotal(values2DMix, 20), 0.0000001d);
 		} catch (Exception e) {
-			assertTrue("Incorrect Exception Type Thrown", e.getClass().equals(IndexOutOfBoundsException.class));
+			fail("Exception should not be thrown - Invalid Index must return 0 as per Method Specification");
 		}	
 	}
 	
