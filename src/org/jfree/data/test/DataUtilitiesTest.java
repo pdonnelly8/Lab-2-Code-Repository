@@ -557,55 +557,46 @@ public class DataUtilitiesTest extends TestCase {
 	
 	@Test
 	public void testGetCumulativePercentagesPositiveOnLeftBoundary() {
-		System.out.println("Positive at Key=0 is " + DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("0"));
 		assertEquals("Incorrect Percentage - Expected 0.3125", 0.3125, (double)DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("0"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesPositiveNotOnBoundary() {
-		System.out.println("Positive at Key=1 is " + DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("1"));
 		assertEquals("Incorrect Percentage - Expected 0.875", 0.875, (double)DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("1"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesPositiveOnRightBoundary() {
-		System.out.println("Positive at Key=2 is " + DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("2"));
 		assertEquals("Incorrect Percentage - Expected 1.0", 1.0, (double)DataUtilities.getCumulativePercentages(keyedValuesPos).getValue("2"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesNegativeOnLeftBoundary() {
-		System.out.println("Negative at Key=0 is " + DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("0"));
 		assertEquals("Incorrect Percentage - Expected 0.3125", 0.3125, (double)DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("0"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesNegativeNotOnBoundary() {
-		System.out.println("Negative at Key=1 is " + DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("1"));
-		assertEquals("Incorrect Percentage - Expected -0.875", 0.875, (double)DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("1"), 0.00000000001d);
+		assertEquals("Incorrect Percentage - Expected 0.875", 0.875, (double)DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("1"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesNegativeOnRightBoundary() {
-		System.out.println("Negative at Key=2 is " + DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("2"));
-		assertEquals("Incorrect Percentage - Expected -1.0", 1.0, (double)DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("2"), 0.00000000001d);
+		assertEquals("Incorrect Percentage - Expected 1.0", 1.0, (double)DataUtilities.getCumulativePercentages(keyedValuesNeg).getValue("2"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesMixOnLeftBoundary() {
-		System.out.println("Mix at Key=0 is " + DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("0"));
 		assertEquals("Incorrect Percentage - Expected 0.3125", 0.3125, (double)DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("0"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesMixNotOnBoundary() {
-		System.out.println("Mix at Key=1 is " + DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("1"));
 		assertEquals("Incorrect Percentage - Expected -0.875", 0.875, (double)DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("1"), 0.00000000001d);
 	}
 	
 	@Test
 	public void testGetCumulativePercentagesMixOnRightBoundary() {
-		System.out.println("Mix at Key=2 is " + DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("2"));
 		assertEquals("Incorrect Percentage - Expected -1.0", 1.0, (double)DataUtilities.getCumulativePercentages(keyedValuesMix).getValue("2"), 0.00000000001d);
 	}
 }
